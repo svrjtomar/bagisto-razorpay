@@ -16,16 +16,12 @@
       ]
     }
   },
-"repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/svrjtomar/bagisto-razorpay.git"
-    }
-]
+
   
   "require": {
     "php": "^8.1"
   }
 }
+
 
 
