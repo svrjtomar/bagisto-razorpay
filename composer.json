@@ -3,6 +3,7 @@
   "description": "Razorpay payment gateway for Bagisto",
   "type": "library",
   "license": "MIT",
+   "version": "1.0.0",
   "autoload": {
     "psr-4": {
       "SleepyBear\\Razorpay\\": "src/"
@@ -19,3 +20,4 @@
     "php": "^8.1"
   }
 }
+
