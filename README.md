@@ -1,65 +1,114 @@
-# Bagisto Razorpay Payment Gateway
 
-Razorpay payment gateway integration for Bagisto.  
-This package adds Razorpay as a prepaid payment method without modifying Bagisto core files.
+## ✅ Tested Working Installation Method
 
----
-
-## Features
-
-- Razorpay Checkout integration
-- Secure payment signature verification
-- Cart → Order mapping using Razorpay receipt
-- Payment details saved in Bagisto order payment
-- Invoice generation after successful payment
-- Compatible with Bagisto default success page
-- No core file overrides
+This README documents **only the method that is confirmed working**.
 
 ---
 
-## Requirements
+## 📂 Required Folder Structure
 
-- PHP 8.1+
-- Bagisto 2.x
-- Razorpay account (Test or Live)
+Place the package exactly here:
+
+packages/
+└── SleepyBear/
+    └── Razorpay/
+
+Folder names and case **must match exactly**.
 
 ---
 
-## Installation
+## 🚀 Installation Steps
 
-Install the package via Composer:
+### 1️⃣ Upload Package Files
 
+Upload the full package into:
+
+packages/SleepyBear/Razorpay
+
+You may upload using:
+- cPanel File Manager
+- SFTP
+- Git clone
+
+---
+
+### 2️⃣ Require Package via Composer
+
+From your Bagisto root directory:
 
 composer require sleepybear/bagisto-razorpay:dev-main
 
+This registers autoloading and providers.
 
-### Step 2: Publish Assets
+---
 
+### 3️⃣ Clear Cache
 
-php artisan vendor:publish --tag=razorpay-assets
-```
-
-### Step 3: Clear Cache
-
-
-php artisan config:cache
-php artisan route:cache
 php artisan optimize:clear
-```
 
 ---
 
-## ⚙️ Configuration
+### 4️⃣ Verify Installation
 
-### 1. Get PhonePe Credentials
+php artisan package:discover
 
-1. Login to [PhonePe Business Dashboard](https://business.razorpay.com/)
-2. Navigate to **Developer Settings**
-3. Copy your **Client ID** and **Client Secret**
-
-### 2. Configure in Bagisto Admin
-
-1. Go to **Admin Panel → Configuration → Sales → Payment Methods**
-2. Find **PhonePe** in the payment methods list
+No errors = success.
 
 ---
+
+## ⚙️ Enable Razorpay in Admin
+
+Admin Panel → Configure → Sales → Payment Methods → Razorpay
+
+Enter:
+- Razorpay Key ID
+- Razorpay Key Secret
+
+Enable & Save.
+
+---
+
+## 🛒 Checkout Flow
+
+- Razorpay visible in checkout
+- Popup opens
+- Payment completes
+- Order & invoice created
+- Cart cleared
+- Default Bagisto success page shown
+
+---
+
+## 🧾 Stored Payment Data
+
+Database table:
+
+order_payment
+
+Column:
+
+additional (JSON)
+
+Example:
+
+{
+  "Payment Status": "Paid",
+  "Payment Gateway": "Razorpay",
+  "Razorpay Order ID": "order_xxxx",
+  "Razorpay Payment ID": "pay_xxxx"
+}
+
+
+---
+
+## 🧹 Uninstall
+
+composer remove sleepybear/bagisto-razorpay
+php artisan optimize:clear
+
+---
+
+## 📜 License
+
+MIT
+"""
