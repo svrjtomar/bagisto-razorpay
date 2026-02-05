@@ -1,0 +1,21 @@
+{
+  "name": "sleepybear/bagisto-razorpay",
+  "description": "Razorpay payment gateway for Bagisto",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "SleepyBear\\Razorpay\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "SleepyBear\\Razorpay\\Providers\\RazorpayServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^8.1"
+  }
+}

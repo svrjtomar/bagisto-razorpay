@@ -1,0 +1,26 @@
+namespace SleepyBear\Razorpay\Services;
+
+use Razorpay\Api\Api;
+
+class RazorpayService
+{
+    protected Api $api;
+
+    public function __construct()
+    {
+        $this->api = new Api(
+            core()->getConfigData('sales.payment_methods.razorpay.key_id'),
+            core()->getConfigData('sales.payment_methods.razorpay.key_secret')
+        );
+    }
+
+    public function createOrder(array $data)
+    {
+        return $this->api->order->create($data);
+    }
+
+    public function fetchPayment(string $paymentId)
+    {
+        return $this->api->payment->fetch($paymentId);
+    }
+}
